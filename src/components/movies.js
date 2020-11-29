@@ -5,7 +5,7 @@ export class Movies extends React.Component{
 
     render(){
         return this.props.movies.map( (movie)=>{
-            return <MovieItem movie={movie}></MovieItem>
+            return <MovieItem movie={movie} ReloadData={this.props.ReloadData}></MovieItem>
         })
     }
 }

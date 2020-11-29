@@ -70,6 +70,16 @@ app.post('/api/movies', (req, res) => {
     res.send('Data Recieved!');
 })
 
+//listen for http delete method,passes up id of documents too delete
+app.delete('/api/movies/:id',(req,res) =>{
+    console.log("Delete Movie: "+req.params.id)
+
+    //find the recrod in database,find it by id and delete record and send back data
+    movieModel.findByIdAndDelete(req.params.id,(err, data)=>{
+        res.send(data)
+    })
+})
+
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })
