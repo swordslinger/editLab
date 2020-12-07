@@ -83,3 +83,14 @@ app.delete('/api/movies/:id',(req,res) =>{
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })
+
+// makes aysnchronas call too data base,finds record by id and updates
+app.put('/api/movies/:id', (req, res)=>{
+    console.log("Update Movie: "+req.params.id)
+    console.log(req.body);
+
+    movieModel.findByIdAndUpdate(req.params.id,req.body, {new:true},
+        (err,data)=>{
+            res.send(data);
+        })
+})
